@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Балапан — қазақ тілін үйренейік!</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <span class="avatar" aria-hidden="true">🐤</span>
+      <h1>Балапанмен қазақша сөйлейік!</h1>
+    </header>
+
+    <!-- Экран 1: знакомство -->
+    <section id="setup-screen" class="screen">
+      <div class="card">
+        <p class="bubble">Сәлем! Мен — Балапан 🐤 Атың кім?</p>
+        <input id="name-input" class="big-input" type="text" placeholder="Атыңды жаз..." maxlength="40" />
+
+        <p class="bubble">Неше жастасың?</p>
+        <div class="choice-row" id="age-row">
+          <button class="choice-btn age-btn" data-age="6">6</button>
+          <button class="choice-btn age-btn" data-age="7">7</button>
+        </div>
+
+        <p class="bubble">Не үйренгің келеді?</p>
+        <div class="choice-row" id="topic-row">
+          <button class="choice-btn topic-btn" data-topic="colors">🎨 Түстер</button>
+          <button class="choice-btn topic-btn" data-topic="animals">🐫 Жануарлар</button>
+          <button class="choice-btn topic-btn" data-topic="family">👨‍👩‍👧 Отбасы</button>
+          <button class="choice-btn topic-btn" data-topic="numbers">🔢 Сандар</button>
+          <button class="choice-btn topic-btn" data-topic="greetings">👋 Амандасу</button>
+          <button class="choice-btn topic-btn" data-topic="sounds">🔤 Дыбыстар</button>
+        </div>
+
+        <button id="start-btn" class="primary-btn" disabled>Бастау! ▶️</button>
+        <p id="setup-error" class="error-text" hidden></p>
+      </div>
+    </section>
+
+    <!-- Экран 2: урок -->
+    <section id="lesson-screen" class="screen" hidden>
+      <div class="lesson-layout">
+        <div id="chat-log" class="chat-log" aria-live="polite"></div>
+
+        <div id="game-area" class="game-area" hidden></div>
+
+        <p id="voice-status" class="voice-status" hidden>🎙️ Тыңдап тұрмын...</p>
+
+        <form id="reply-form" class="reply-form">
+          <button type="button" id="replay-audio-btn" class="icon-btn" title="Қайта тыңдау">🔊</button>
+          <button type="button" id="mic-btn" class="icon-btn" title="Дауыспен айту" hidden>🎤</button>
+          <input id="reply-input" class="big-input" type="text" placeholder="Жауабыңды жаз немесе 🎤 басып айт..." autocomplete="off" />
+          <button type="submit" class="primary-btn small">Жіберу</button>
+        </form>
+      </div>
+    </section>
+
+    <div id="loading-indicator" class="loading" hidden>
+      <span class="spinner" aria-hidden="true">🐫</span>
+      <span>Балапан ойлануда...</span>
+    </div>
+  </div>
+
+  <audio id="agent-audio" preload="none"></audio>
+  <script src="/static/app.js"></script>
+</body>
+</html>
